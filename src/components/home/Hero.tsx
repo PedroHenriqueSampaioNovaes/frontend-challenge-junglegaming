@@ -48,7 +48,7 @@ export default function Hero() {
 
           <a
             href="#catalogo"
-            className="flex w-fit items-center gap-2 text-xs font-bold uppercase text-text-accent md:text-lnk outline-offset-4 focus-visible:outline-2 focus-visible:outline-text-primary md:bg-primary md:w-35 md:h-10 md:justify-center md:rounded-sm md:mt-7 hover:bg-primary-light transition"
+            className="flex w-fit items-center gap-2 text-xs font-bold uppercase text-text-accent md:text-lnk outline-offset-4 focus-visible:outline-2 focus-visible:outline-text-primary md:bg-primary md:w-35 md:h-10 md:justify-center md:rounded-sm md:mt-7 md:hover:bg-primary-light transition"
           >
             Explorar
             <ArrowExplorerSvg className="size-3 md:hidden" aria-hidden="true" />
