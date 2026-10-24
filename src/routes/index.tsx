@@ -1,9 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { HeaderMobile } from '../components/header/HeaderMobile';
 
 export const Route = createFileRoute('/')({
   component: Home,
 });
 
 function Home() {
-  return <h1 className="p-8 text-3xl font-bold">NFT Marketplace</h1>;
+  return (
+    <>
+      <header>
+        <h1>NFT Marketplace</h1>
+      </header>
+      <HeaderMobile />
+    </>
+  );
 }
