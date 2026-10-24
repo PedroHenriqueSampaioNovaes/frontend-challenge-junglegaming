@@ -1,0 +1,36 @@
+import type { SVGProps } from 'react';
+
+export default function LogoutSvg(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="18"
+      height="17"
+      viewBox="0 0 18 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M17.0268 8.559H6.99268"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="#140D0A"
+      />
+      <path
+        d="M14.5879 6.129L17.0279 8.559L14.5879 10.989"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="#140D0A"
+      />
+      <path
+        d="M12.5009 4.81667C12.2259 1.83333 11.1092 0.75 6.66752 0.75C0.750021 0.75 0.750021 2.675 0.750021 8.45833C0.750021 14.2417 0.750021 16.1667 6.66752 16.1667C11.1092 16.1667 12.2259 15.0833 12.5009 12.1"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="#140D0A"
+      />
+    </svg>
+  );
+}
