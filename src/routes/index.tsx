@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
+
 import HeaderDesktop from '../components/header/HeaderDesktop';
 import HeaderMobile from '../components/header/HeaderMobile';
+import Hero from '@/components/home/Hero';
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -8,10 +10,10 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   return (
-    <>
+    <div className="container">
       <HeaderDesktop />
-      <h1 className="sr-only">NFT Marketplace</h1>
       <HeaderMobile />
-    </>
+      <Hero />
+    </div>
   );
 }
