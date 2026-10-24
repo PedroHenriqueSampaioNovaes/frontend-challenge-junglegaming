@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export default function CartSvg(props: SVGProps<SVGSVGElement>) {
+export default function ShopSvg(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="18"

@@ -5,7 +5,7 @@ import BgMobile from '../../assets/BgMobile';
 import HouseSvg from '@/assets/icons/HouseSvg';
 import ScannerSvg from '@/assets/icons/ScannerSvg';
 import HeartSvg from '@/assets/icons/HeartSvg';
-import CartSvg from '@/assets/icons/CartSvg';
+import ShopSvg from '@/assets/icons/ShopSvg';
 import UserSvg from '@/assets/icons/UserSvg';
 
 const iconClass = 'size-6';
@@ -63,7 +63,7 @@ export function HeaderMobile() {
               aria-label="Carrinho"
               className="flex p-2 text-text-secondary focus-visible:outline-2 focus-visible:outline-text-primary"
             >
-              <CartSvg className={iconClass} aria-hidden="true" />
+              <ShopSvg className={iconClass} aria-hidden="true" />
             </Link>
           </li>
           <li>
