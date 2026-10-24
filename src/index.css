@@ -1,7 +1,7 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -29,6 +29,12 @@
   font-display: swap;
 }
 
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-lnk);
+  color: #fff;
+}
+
 @theme {
   --font-body: 'Roboto Mono', ui-monospace, monospace;
   --font-title: 'Gabarito', ui-sans-serif, system-ui, sans-serif;
@@ -36,7 +42,6 @@
   --color-text-primary: #fff;
   --color-text-secondary: #cfb28c;
   --color-text-accent: #e89b55;
-
   --color-primary: #d28a4c;
   --color-primary-light: #dd9a5f;
   --color-primary-dark: #c47b3e;
@@ -53,20 +58,6 @@
   --color-gray-light: #ededed;
   --color-success: #00a66c;
   --color-error: #ed1b2e;
-}
-
-body {
-  font-family: var(--font-body);
-  background-color: var(--color-lnk);
-  color: #fff;
-}
-
-@utility title {
-  @apply text-white font-sans font-bold text-[2rem];
-}
-
-@utility title-large {
-  @apply text-white font-title font-bold text-[2.625rem];
 }
 
 @theme inline {
@@ -96,7 +87,6 @@ body {
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -110,6 +100,14 @@ body {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@utility title {
+  @apply text-white font-sans font-bold text-[2rem];
+}
+
+@utility title-large {
+  @apply text-white font-title font-bold text-[2.625rem];
 }
 
 :root {
