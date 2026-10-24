@@ -1,1 +1,42 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Gabarito';
+  src: url('/fonts/display/Gabarito-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/fonts/body/RobotoMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/fonts/body/RobotoMono-Italic-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-body: 'Roboto Mono', ui-monospace, monospace;
+  --font-title: 'Gabarito', ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+@utility title {
+  @apply text-white font-sans font-normal text-[2rem];
+}
+
+@utility title-large {
+  @apply text-white font-title font-bold text-[2.625rem];
+}
