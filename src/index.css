@@ -57,7 +57,7 @@ body {
 }
 
 @utility title {
-  @apply text-white font-sans font-normal text-[2rem];
+  @apply text-white font-sans font-bold text-[2rem];
 }
 
 @utility title-large {
