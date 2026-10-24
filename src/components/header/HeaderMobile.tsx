@@ -10,7 +10,7 @@ import UserSvg from '@/assets/icons/UserSvg';
 
 const iconClass = 'size-6';
 
-export function HeaderMobile() {
+export default function HeaderMobile() {
   return (
     <nav
       aria-label="Navegação principal"

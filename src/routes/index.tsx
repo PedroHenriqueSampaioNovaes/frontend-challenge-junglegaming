@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import HeaderDesktop from '../components/header/HeaderDesktop';
-import { HeaderMobile } from '../components/header/HeaderMobile';
+import HeaderMobile from '../components/header/HeaderMobile';
 
 export const Route = createFileRoute('/')({
   component: Home,
