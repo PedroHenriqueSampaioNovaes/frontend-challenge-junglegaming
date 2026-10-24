@@ -16,8 +16,8 @@ const focusClass =
 
 export default function HeaderDesktop() {
   return (
-    <header className="hidden bg-lnk px-35 pt-6 md:block">
-      <div className="relative mx-auto h-11 max-w-376 flex items-center justify-between after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-bottom after:scale-y-30 after:bg-primary">
+    <header className="hidden bg-lnk pt-6 md:block">
+      <div className="relative mx-auto h-11 max-w-376 flex items-center justify-between gap-6 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-bottom after:scale-y-30 after:bg-primary">
         <Link
           to="/"
           aria-label="Kurio, página inicial"
