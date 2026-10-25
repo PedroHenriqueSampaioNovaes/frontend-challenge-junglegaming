@@ -27,6 +27,9 @@ const sorters: Record<
 };
 
 export const handlers = [
+  // Probed by enableMocking to detect when the worker stopped intercepting.
+  http.get('/api/health', () => HttpResponse.json({ status: 'ok' })),
+
   http.get('/api/nfts', async ({ request }) => {
     const url = new URL(request.url);
     const query = url.searchParams;
