@@ -20,7 +20,7 @@ export const Route = createFileRoute('/')({
 function Home() {
   return (
     <CatalogFiltersProvider>
-      <div className="container">
+      <div className="container max-md:pb-[calc(var(--nav-mobile-height)+1.5rem)]">
         <HeaderDesktop />
         <HeaderMobile />
         <Hero />
