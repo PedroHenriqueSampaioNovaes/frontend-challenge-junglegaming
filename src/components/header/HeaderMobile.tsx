@@ -36,7 +36,7 @@ export default function HeaderMobile() {
           <li>
             <Link
               to="/"
-              activeOptions={{ exact: true }}
+              activeOptions={{ exact: true, includeSearch: false }}
               aria-label="Início"
               className="flex p-2 text-text-secondary data-[status=active]:text-text-accent focus-visible:outline-2 focus-visible:outline-text-primary"
             >

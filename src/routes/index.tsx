@@ -1,19 +1,31 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, stripSearchParams } from '@tanstack/react-router';
 
 import HeaderDesktop from '../components/header/HeaderDesktop';
 import HeaderMobile from '../components/header/HeaderMobile';
 import Hero from '@/components/home/Hero';
+import Catalog from '@/components/home/Catalog';
+
+import { CatalogFiltersProvider } from '@/contexts/CatalogFiltersContext';
+import {
+  catalogSearchDefaults,
+  catalogSearchSchema,
+} from '@/features/nfts/catalogSearch';
 
 export const Route = createFileRoute('/')({
+  validateSearch: catalogSearchSchema,
+  search: { middlewares: [stripSearchParams(catalogSearchDefaults)] },
   component: Home,
 });
 
 function Home() {
   return (
-    <div className="container">
-      <HeaderDesktop />
-      <HeaderMobile />
-      <Hero />
-    </div>
+    <CatalogFiltersProvider>
+      <div className="container">
+        <HeaderDesktop />
+        <HeaderMobile />
+        <Hero />
+        <Catalog />
+      </div>
+    </CatalogFiltersProvider>
   );
 }

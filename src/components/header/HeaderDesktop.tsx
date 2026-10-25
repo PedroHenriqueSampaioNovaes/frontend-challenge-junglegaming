@@ -32,7 +32,7 @@ export default function HeaderDesktop() {
               <li key={to} className="flex">
                 <Link
                   to={to}
-                  activeOptions={{ exact: true }}
+                  activeOptions={{ exact: true, includeSearch: false }}
                   className={`group relative flex items-center pb-5 tracking-wide text-text-primary data-[status=active]:font-bold data-[status=active]:text-text-accent ${focusClass} hover:text-primary-light transition`}
                 >
                   {label}
