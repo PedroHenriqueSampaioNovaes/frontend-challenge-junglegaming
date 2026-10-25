@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { SlidersHorizontalIcon } from 'lucide-react';
 
 import { CatalogFilterSections } from '@/components/home/CatalogSidebar';
-import type { CatalogFiltersState } from '@/hooks/useCatalogFilters';
 import {
   Sheet,
   SheetContent,
@@ -12,11 +11,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-export default function CatalogFiltersDrawer({
-  filters,
-}: {
-  filters: CatalogFiltersState;
-}) {
+export default function CatalogFiltersDrawer() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -42,10 +37,7 @@ export default function CatalogFiltersDrawer({
           </SheetDescription>
         </SheetHeader>
         <div className="overflow-y-auto px-4 pb-4">
-          <CatalogFilterSections
-            filters={filters}
-            onApply={() => setOpen(false)}
-          />
+          <CatalogFilterSections onApply={() => setOpen(false)} />
         </div>
       </SheetContent>
     </Sheet>

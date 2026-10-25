@@ -6,23 +6,15 @@ import {
   networks,
   PRICE_MAX,
   PRICE_MIN,
-  type CatalogFiltersState,
-} from '@/hooks/useCatalogFilters';
+} from '@/features/nfts/catalogFilters';
+import { useCatalogFilters } from '@/hooks/useCatalogFilters';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 
 const focusClass =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary';
 
-type CatalogFilterSectionsProps = {
-  filters: CatalogFiltersState;
-  onApply?: () => void;
-};
-
-export function CatalogFilterSections({
-  filters,
-  onApply,
-}: CatalogFilterSectionsProps) {
+export function CatalogFilterSections({ onApply }: { onApply?: () => void }) {
   const id = useId();
   const {
     collection,
@@ -32,7 +24,7 @@ export function CatalogFilterSections({
     price,
     setPrice,
     applyPrice,
-  } = filters;
+  } = useCatalogFilters();
 
   return (
     <div className="flex flex-col gap-7.5">
@@ -141,15 +133,13 @@ export function CatalogFilterSections({
   );
 }
 
-export default function CatalogSidebar({
-  filters,
-}: Pick<CatalogFilterSectionsProps, 'filters'>) {
+export default function CatalogSidebar() {
   return (
     <aside
       aria-label="Filtros do catálogo"
       className="hidden self-start rounded-sm bg-surface-card px-4 pt-3.5 pb-4 md:block"
     >
-      <CatalogFilterSections filters={filters} />
+      <CatalogFilterSections />
     </aside>
   );
 }

@@ -5,7 +5,6 @@ import CatalogSidebar from '@/components/home/CatalogSidebar';
 import NftCard from '@/components/home/NftCard';
 
 import type { NftSort } from '@/features/nfts/types';
-
 import { useCatalogFilters } from '@/hooks/useCatalogFilters';
 import { useNfts } from '@/hooks/useNfts';
 
@@ -32,7 +31,6 @@ const focusClass =
 
 export default function Catalog() {
   const [tab, setTab] = useState<string>(tabs[0]);
-  const [sort, setSort] = useState<NftSort>(sortOptions[0].value);
   const filters = useCatalogFilters();
 
   const { data, isPending, isError, isFetching, refetch } = useNfts({
@@ -40,7 +38,7 @@ export default function Catalog() {
     networks: filters.selectedNetworks,
     minPrice: filters.appliedPrice[0].toFixed(2),
     maxPrice: filters.appliedPrice[1].toFixed(2),
-    sort,
+    sort: filters.sort,
     page: 1,
     pageSize: PAGE_SIZE,
   });
@@ -55,7 +53,7 @@ export default function Catalog() {
         Catálogo de NFTs
       </h2>
 
-      <CatalogSidebar filters={filters} />
+      <CatalogSidebar />
 
       <div className="flex flex-col gap-5.5">
         <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
@@ -77,14 +75,16 @@ export default function Catalog() {
           </div>
 
           <div className="flex w-full items-center justify-between gap-4 md:w-auto">
-            <CatalogFiltersDrawer filters={filters} />
+            <CatalogFiltersDrawer />
             <div className="flex items-center gap-1.5 text-xs text-text-primary">
               <span id="sort-label" className="max-sm:sr-only">
                 Ordenar por:
               </span>
               <Select
-                value={sort}
-                onValueChange={(value) => value && setSort(value as NftSort)}
+                value={filters.sort}
+                onValueChange={(value) =>
+                  value && filters.setSort(value as NftSort)
+                }
                 items={sortOptions}
               >
                 <SelectTrigger

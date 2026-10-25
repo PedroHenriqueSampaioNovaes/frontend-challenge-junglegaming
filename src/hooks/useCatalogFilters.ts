@@ -1,59 +1,62 @@
-import { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
+import { useContext } from 'react';
 
-export const collections = [
-  { label: 'Arte digital', count: 33 },
-  { label: 'Fotografia', count: 12 },
-  { label: 'Música', count: 65 },
-  { label: 'Arte 3D', count: 39 },
-  { label: 'Colecionáveis', count: 23 },
-  { label: 'Generativa', count: 17 },
-  { label: 'Jogos', count: 19 },
-  { label: 'Assinaturas', count: 13 },
-  { label: 'Utilidade', count: 18 },
-] as const;
+import { CatalogFiltersContext } from '@/contexts/CatalogFiltersContext';
+import type {
+  CollectionLabel,
+  NetworkLabel,
+} from '@/features/nfts/catalogFilters';
+import type { NftSort } from '@/features/nfts/types';
 
-export const networks = [
-  { label: 'Ethereum', count: 119 },
-  { label: 'Polygon', count: 78 },
-  { label: 'Solana', count: 86 },
-] as const;
-
-export const PRICE_MIN = 0.01;
-export const PRICE_MAX = 16;
-const DEFAULT_PRICE = [PRICE_MIN, 16];
-
-export const formatPrice = (value: number) =>
-  value.toFixed(2).replace('.', ',');
+/** The slider emits float32 noise (e.g. 0.009999999776); keep the URL clean. */
+const roundPrice = (value: number) => Math.round(value * 100) / 100;
 
 export function useCatalogFilters() {
-  const [collection, setCollection] = useState<string | null>(null);
-  const [selectedNetworks, setSelectedNetworks] = useState<string[]>([]);
-  // `price` is the slider draft; `appliedPrice` is what the catalog queries.
-  const [price, setPrice] = useState<number[]>(DEFAULT_PRICE);
-  const [appliedPrice, setAppliedPrice] = useState<number[]>(DEFAULT_PRICE);
+  const context = useContext(CatalogFiltersContext);
+  const navigate = useNavigate({ from: '/' });
 
-  const applyPrice = () => setAppliedPrice(price);
-
-  const toggleCollection = (label: string) =>
-    setCollection((current) => (current === label ? null : label));
-
-  const toggleNetwork =(label: string) =>
-    setSelectedNetworks((current) =>
-      current.includes(label)
-        ? current.filter((item) => item !== label)
-        : [...current, label],
+  if (!context) {
+    throw new Error(
+      'useCatalogFilters deve ser usado dentro de CatalogFiltersProvider',
     );
+  }
 
-  return {
-    collection,
-    toggleCollection,
-    selectedNetworks,
-    toggleNetwork,
-    price,
-    setPrice,
-    appliedPrice,
-    applyPrice,
-  };
+  // Every filter change is a history entry; keep the scroll where it is.
+  const toggleCollection = (label: CollectionLabel) =>
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        collection: prev.collection === label ? undefined : label,
+      }),
+      resetScroll: false,
+    });
+
+  const toggleNetwork = (label: NetworkLabel) =>
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        networks: prev.networks.includes(label)
+          ? prev.networks.filter((item) => item !== label)
+          : [...prev.networks, label],
+      }),
+      resetScroll: false,
+    });
+
+  const applyPrice = () =>
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        minPrice: roundPrice(context.price[0]),
+        maxPrice: roundPrice(context.price[1]),
+      }),
+      resetScroll: false,
+    });
+
+  const setSort = (sort: NftSort) =>
+    navigate({
+      search: (prev) => ({ ...prev, sort }),
+      resetScroll: false,
+    });
+
+  return { ...context, toggleCollection, toggleNetwork, applyPrice, setSort };
 }
-
-export type CatalogFiltersState = ReturnType<typeof useCatalogFilters>;
