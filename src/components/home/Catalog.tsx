@@ -137,7 +137,7 @@ export default function Catalog() {
         ) : (
           <ul
             aria-busy={isFetching}
-            className="grid grid-cols-2 gap-x-8.5 gap-y-18 md:grid-cols-[repeat(auto-fit,minmax(12.5rem,15.625rem))]"
+            className="grid grid-cols-2 gap-x-8.5 gap-y-6 md:gap-y-18 md:grid-cols-[repeat(auto-fit,minmax(12.5rem,15.625rem))]"
           >
             {data.items.map((nft) => (
               <li key={nft.id}>
