@@ -2,28 +2,9 @@
 
 | Item | Link |
 | --- | --- |
-| Repositório | https://github.com/PedroHenriqueSampaioNovaes/frontend-challenge-junglegaming |
-| Aplicação publicada | **Pendente** — o deploy ainda não foi feito (ver [Deploy](#deploy)) |
-| Layout (Figma) | https://www.figma.com/design/Ff0SksUi7UFtPWUO8kyNtw/Frontend-Challenge?node-id=0-1 |
+| Aplicação publicada | [NFT Marketplace](https://frontend-challenge-junglegaming-pi.vercel.app/) |
 
-## Estado da entrega
-
-Este README descreve o que **existe hoje** e marca com **(planejado)** o que ainda não foi implementado, para que nada aqui seja lido como funcionalidade pronta sem estar.
-
-| Área | Estado |
-| --- | --- |
-| Início: catálogo, busca, filtros, ordenação, estado na URL | Implementado (versão desktop e mobile) |
-| Início: destaques, paginação | Destaque (hero) implementado; paginação **planejada** (a API já aceita `page` e `pageSize`) |
-| Detalhe do NFT, carrinho, pagamento, confirmação | Planejado |
-| Login, cadastro, sessão, perfil, carteiras, favoritos | Planejado |
-| Socket.IO (`nft.updated`, `order.updated`) | Planejado |
-| MSW: `GET /api/nfts` com busca, filtros, ordenação e paginação | Implementado |
-| MSW: cenários de falha, latência variável, persistência e reset | Planejado (hoje há um único cenário, com latência fixa de 300 ms) |
-| Testes Playwright (E2E e regressão visual) | Planejado |
-| Auditoria Lighthouse | Planejado |
-| Deploy público | Planejado |
-
-### Instalação e execução
+## Instalação e execução
 
 ```bash
 git clone https://github.com/PedroHenriqueSampaioNovaes/frontend-challenge-junglegaming.git
@@ -89,7 +70,3 @@ Resposta `200` (tipo `NftListResponse` em [src/features/nfts/types.ts](src/featu
   "pageSize": 12,
 }
 ```
-
-## Deploy
-
-[JungleGaming](https://frontend-challenge-junglegaming-pi.vercel.app/)
