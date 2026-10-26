@@ -8,6 +8,7 @@ import type {
 import type { NftSort } from '@/features/nfts/types';
 
 export type CatalogFiltersContext = {
+  search: string;
   collection: CollectionLabel | null;
   selectedNetworks: NetworkLabel[];
   price: number[];
@@ -21,6 +22,7 @@ export const CatalogFiltersContext =
 
 export function CatalogFiltersProvider({ children }: { children: ReactNode }) {
   const {
+    search = '',
     collection = null,
     networks,
     minPrice,
@@ -46,6 +48,7 @@ export function CatalogFiltersProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<CatalogFiltersContext>(
     () => ({
+      search,
       collection,
       selectedNetworks: networks,
       price,
@@ -53,7 +56,7 @@ export function CatalogFiltersProvider({ children }: { children: ReactNode }) {
       appliedPrice,
       sort,
     }),
-    [collection, networks, price, appliedPrice, sort],
+    [search, collection, networks, price, appliedPrice, sort],
   );
 
   return (

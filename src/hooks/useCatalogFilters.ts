@@ -1,5 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 
 import { CatalogFiltersContext } from '@/contexts/CatalogFiltersContext';
 import type {
@@ -14,6 +14,16 @@ const roundPrice = (value: number) => Math.round(value * 100) / 100;
 export function useCatalogFilters() {
   const context = useContext(CatalogFiltersContext);
   const navigate = useNavigate({ from: '/' });
+
+  // Stable identity: the search field debounces on it.
+  const setSearch = useCallback(
+    (search: string) =>
+      navigate({
+        search: (prev) => ({ ...prev, search: search || undefined }),
+        resetScroll: false,
+      }),
+    [navigate],
+  );
 
   if (!context) {
     throw new Error(
@@ -58,5 +68,12 @@ export function useCatalogFilters() {
       resetScroll: false,
     });
 
-  return { ...context, toggleCollection, toggleNetwork, applyPrice, setSort };
+  return {
+    ...context,
+    setSearch,
+    toggleCollection,
+    toggleNetwork,
+    applyPrice,
+    setSort,
+  };
 }

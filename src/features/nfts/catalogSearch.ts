@@ -9,6 +9,8 @@ const sorts = [
   'price-desc',
 ] as const satisfies readonly NftSort[];
 
+export const SEARCH_MAX_LENGTH = 80;
+
 const price = (fallback: number) =>
   z.number().min(PRICE_MIN).max(PRICE_MAX).default(fallback).catch(fallback);
 
@@ -18,6 +20,13 @@ const price = (fallback: number) =>
  */
 export const catalogSearchSchema = z
   .object({
+    search: z
+      .string()
+      .trim()
+      .min(1)
+      .max(SEARCH_MAX_LENGTH)
+      .optional()
+      .catch(undefined),
     collection: z
       .literal(collections.map(({ label }) => label))
       .optional()

@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative overflow-hidden rounded-4xl max-md:bg-linear-to-br from-primary/20 to-primary/10 mt-8"
+      className="relative overflow-hidden rounded-4xl max-md:bg-linear-to-br from-primary/20 to-primary/10 mt-4 md:mt-8"
     >
       <div
         aria-hidden="true"

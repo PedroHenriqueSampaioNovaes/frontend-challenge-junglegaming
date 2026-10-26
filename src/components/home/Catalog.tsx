@@ -34,6 +34,7 @@ export default function Catalog() {
   const filters = useCatalogFilters();
 
   const { data, isPending, isError, isFetching, refetch } = useNfts({
+    search: filters.search || undefined,
     collection: filters.collection ?? undefined,
     networks: filters.selectedNetworks,
     minPrice: filters.appliedPrice[0].toFixed(2),
@@ -74,7 +75,7 @@ export default function Catalog() {
             })}
           </div>
 
-          <div className="flex w-full items-center justify-between gap-4 md:w-auto">
+          <div className="flex w-full items-center justify-end gap-4 md:w-auto">
             <CatalogFiltersDrawer />
             <div className="flex items-center gap-1.5 text-xs text-text-primary">
               <span id="sort-label" className="max-sm:sr-only">
