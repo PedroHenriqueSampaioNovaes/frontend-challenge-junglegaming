@@ -24,7 +24,7 @@ function Home() {
       <div className="container max-md:pb-[calc(var(--nav-mobile-height)+1.5rem)]">
         <HeaderDesktop />
         <HeaderMobile />
-        <SearchBar className="mt-10 md:hidden" />
+        <SearchBar className="mt-7.5 md:hidden" />
         <Hero />
         <Catalog />
       </div>

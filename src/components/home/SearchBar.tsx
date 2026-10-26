@@ -59,7 +59,7 @@ export default function SearchBar({ className }: { className?: string }) {
     <form
       role="search"
       onSubmit={handleSubmit}
-      className={cn('flex items-center gap-2', className)}
+      className={cn('flex items-center gap-2 sticky top-0 z-50 bg-lnk py-2.5', className)}
     >
       <InputGroup className="h-11 rounded-lg border-transparent bg-surface-card has-[[data-slot=input-group-control]:focus-visible]:border-primary has-[[data-slot=input-group-control]:focus-visible]:ring-primary/40 dark:bg-surface-card">
         <InputGroupAddon className="pr-0.5 pl-2.5">
